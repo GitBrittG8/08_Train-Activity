@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Train Station</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="/assets/javascript/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <h1>Train Station</h1>
+                    <h2>Choo Choo!</h2>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-sm-2"></div>
+
+            <div class="col-sm-8">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Train Schedule</h5>
+                        <table class="table">
+                            <thead class="thead-blue">
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-sm-2"></div>
+    
+                <div class="col-sm-8">
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Train</h5>
+
+                            <form>
+                                <div class="form-group">
+                                  <label for="name">Train Name</label>
+                                  <input type="name" class="form-control" id="name">
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="dst">Destination</label>
+                                  <input type="destination" class="form-control" id="dst">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="time">First Train Time (HH:mm - military time)</label>
+                                    <input type="time" class="form-control" id="time">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="frq">Frequency (min)</label>
+                                    <input type="frequency" class="form-control" id="frq">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
