@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="/assets/javascript/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -27,7 +28,7 @@
                 <div class="card mt-2">
                     <div class="card-body">
                         <h5 class="card-title">Current Train Schedule</h5>
-                        <table class="table">
+                        <table class="table" id="train-table">
                             <thead class="thead-blue">
                                 <tr>
                                     <th scope="col">Train Name</th>
@@ -52,27 +53,23 @@
                             <h5 class="card-title">Add Train</h5>
 
                             <form>
-                                <div class="form-group">
-                                  <label for="name">Train Name</label>
-                                  <input type="name" class="form-control" id="name">
+                                <span id="name-div">Name</span>
+                                  <input type="text" id="tName">
                                 </div>
 
-                                <div class="form-group">
-                                  <label for="dst">Destination</label>
-                                  <input type="destination" class="form-control" id="dst">
+                                <span id="destination-div">Destination</span>
+                                  <input type="text" id="tDest">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="time">First Train Time (HH:mm - military time)</label>
-                                    <input type="time" class="form-control" id="time">
+                                <span id="time-div">First Train Time (HH:mm - military time)</span>
+                                    <input type="integer" id="tTime">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="frq">Frequency (min)</label>
-                                    <input type="frequency" class="form-control" id="frq">
+                                <span id="freq-div">Frequency (min)</span>
+                                    <input type="integer" id="tFreq">
                                 </div>
                                 
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button id="add-train" type="submit" class="btn btn-default">Submit</button>
                             </form>
                         </div>
                     </div>
