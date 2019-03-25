@@ -6,9 +6,20 @@
     <title>Train Station</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- Moment.js Reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <!--JS & CSS Reference-->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="/assets/javascript/script.js"></script>
 </head>
+
+
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -23,11 +34,11 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <div class="card mt-2">
-                    <div class="card card-default">
-                        <div class="card-header">Current Train Schedule</div>
-                        <div class="card-body">
-                            <table class="table">
+                <div class="card card-default">
+                    <div class="card-header">Current Train Schedule</div>
+                    <div class="card-body">
+                        <table class="table" id="train-table">
+                            <thead>
                                 <tr>
                                     <th scope="col">Train Name</th>
                                     <th scope="col">Destination</th>
@@ -35,12 +46,15 @@
                                     <th scope="col">Next Arrival</th>
                                     <th scope="col">Minutes Away</th>
                                 </tr>
-                            </table>
-                        </div>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+        <br><br>
 
         <div class="row">
             <div class="col-sm-2"></div>
@@ -49,37 +63,38 @@
                     <div class="card-header">Add Train</div>
                     <div class="card-body">
                         <form role="form">
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <label for="name-input">Train Name</label>
-                                <input id="name-input" type="text" class="form-control">
+                                <input id="name-input" type="text" placeholder="Polar Express" class="form-control">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label for="dst-input">Destination</label>
-                                <input id="dst-input" type="text" class="form-control">
+                                <input id="dst-input" type="text" placeholder="North Pole" class="form-control">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label for="time-input">First Train Time (HH:mm - military time)</label>
-                                <input id="time-input" type="number" class="form-control">
+                                <input id="time-input" type="number" placeholder="00:00" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="frq-input">Frequency (min)</label>
                                 <input id="frq-input" type="number" class="form-control">
                             </div>
-                            
-                            <button id="add_button" type="submit" class="btn btn-default">Submit</button>
+                            <button id="add_button" type="submit" class="btn btn-primary float-right">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <br><br>
 
         <div class="row"  id="footer">
             <div class="col-sm-12">footer</div>
         </div>
     </div> 
+    <script src=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

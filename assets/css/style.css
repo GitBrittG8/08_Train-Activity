@@ -1,5 +1,20 @@
+.jumbotron, h1, h2, #footer {
+    background-color: rgb(157, 190, 129);
+    color:#fff;
+}
+
 h1, h2, #footer {
-    text-align: center;
+    text-align:center;
+    height:40px;
+}
+
+#train-table th, td {
+    display: inline-block;
+    width: 20%;
+}
+
+#add_button {
+    float:center;
 }
 
 /* Create Neat Train style
