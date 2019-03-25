@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="/assets/javascript/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -23,13 +22,12 @@
         <br><br>
         <div class="row">
             <div class="col-sm-2"></div>
-
             <div class="col-sm-8">
                 <div class="card mt-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Current Train Schedule</h5>
-                        <table class="table" id="train-table">
-                            <thead class="thead-blue">
+                    <div class="card card-default">
+                        <div class="card-header">Current Train Schedule</div>
+                        <div class="card-body">
+                            <table class="table">
                                 <tr>
                                     <th scope="col">Train Name</th>
                                     <th scope="col">Destination</th>
@@ -37,48 +35,51 @@
                                     <th scope="col">Next Arrival</th>
                                     <th scope="col">Minutes Away</th>
                                 </tr>
-                            </thead>
-                        </table>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-                <div class="col-sm-2"></div>
-    
-                <div class="col-sm-8">
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Add Train</h5>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="card card-default">
+                    <div class="card-header">Add Train</div>
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">Train Name</label>
+                                <input id="name-input" type="text" class="form-control">
+                            </div>
 
-                            <form>
-                                <span id="name-div">Name</span>
-                                  <input type="text" id="tName">
-                                </div>
+                            <div class="form-group">
+                                <label for="dst-input">Destination</label>
+                                <input id="dst-input" type="text" class="form-control">
+                            </div>
 
-                                <span id="destination-div">Destination</span>
-                                  <input type="text" id="tDest">
-                                </div>
+                            <div class="form-group">
+                                <label for="time-input">First Train Time (HH:mm - military time)</label>
+                                <input id="time-input" type="number" class="form-control">
+                            </div>
 
-                                <span id="time-div">First Train Time (HH:mm - military time)</span>
-                                    <input type="integer" id="tTime">
-                                </div>
-
-                                <span id="freq-div">Frequency (min)</span>
-                                    <input type="integer" id="tFreq">
-                                </div>
-                                
-                                <button id="add-train" type="submit" class="btn btn-default">Submit</button>
-                            </form>
-                        </div>
+                            <div class="form-group">
+                                <label for="frq-input">Frequency (min)</label>
+                                <input id="frq-input" type="number" class="form-control">
+                            </div>
+                            
+                            <button id="add_button" type="submit" class="btn btn-default">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
 
-
-
-    </div>
+        <div class="row"  id="footer">
+            <div class="col-sm-12">footer</div>
+        </div>
+    </div> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
