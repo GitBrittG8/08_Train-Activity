@@ -1,11 +1,24 @@
 .jumbotron, h1, h2, #footer {
     background-color: rgb(157, 190, 129);
     color:#fff;
+    text-align: center;
+}
+.card-header {
+    font-weight:bold;
 }
 
-h1, h2, #footer {
-    text-align:center;
-    height:40px;
+#train-table th,
+    td {
+      display: inline-block;
+      width: 16.575%;
+    }
+
+#spacing {
+    height:100px;
+}
+
+#footer {
+    height:75px;
 }
 
 #train-table th, td {

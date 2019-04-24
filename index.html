@@ -7,97 +7,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script>
 
     <!-- Moment.js Reference -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-
+    
     <!--JS & CSS Reference-->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
-    <script src="/assets/javascript/script.js"></script>
+    <script src="assets/javascript/script.js"></script>
+
 </head>
 
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="jumbotron">
-                    <h1>Train Station</h1>
-                    <h2>Choo Choo!</h2>
-                    <div id="clock">Current Date &amp; Time: <span id="currentTime"> </span></div>
+<div class="container">
+    
+    <div class="jumbotron">
+        <h1><i class="fa fa-newspaper-o"></i>  Train Station</h1>
+        <h2>Choo Choo!</h2><br>
+        <div id="clock"><em>Current Date &amp; Time:</em><br><strong><span id="current-date"> </span></strong></div>
+    </div>
+
+    <!--First Card handles Train Table-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Current Train Schedule
+                </div>
+                <div class="card-body">
+                    <table class="table" id="train-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Frequency (min)</th>
+                                <th scope="col">First Train Time</th>
+                                <th scope="col">Next Arrival</th>
+                                <th scope="col">Minutes Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <br><br>
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="card card-default">
-                    <div class="card-header">Current Train Schedule</div>
-                    <div class="card-body">
-                        <table class="table" id="train-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Train Name</th>
-                                    <th scope="col">Destination</th>
-                                    <th scope="col">Frequency (min)</th>
-                                    <th scope="col">Next Arrival</th>
-                                    <th scope="col">Minutes Away</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12" id="spacing"></div>
+    </div>
+    
+    <!--Second Card handles user inputs-->
+    <div class="row">
+        <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-list-alt"></i> Add Train
+            </div>
+
+            <div class="card-body">
+                <form role="form" id="trainForm">
+
+                    <div class="form-group">
+                        <label for="name-input">Train Name:</label>
+                        <input type="text" class="form-control" id="name-input" placeholder="Polar Express">
                     </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
 
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="card card-default">
-                    <div class="card-header">Add Train</div>
-                    <div class="card-body">
-                        <form id="trainForm" role="form">
-                            <div class="form-group">
-                                <label for="name-input">Train Name</label>
-                                <input id="name-input" type="text" placeholder="Polar Express" class="form-control">
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="dst-input">Destination</label>
-                                <input id="dst-input" type="text" placeholder="North Pole" class="form-control">
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="time-input">First Train Time (HH:mm - military time)</label>
-                                <input id="time-input" type="number" placeholder="00:00" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="frq-input">Frequency (min)</label>
-                                <input id="frq-input" type="number" placeholder="Distance from Destination in Minutes" class="form-control">
-                            </div>
-                            <button id="add_button" type="submit" class="btn btn-primary float-right">Submit</button>
-                        </form>
+                    <div class="form-group">
+                        <label for="dst-input">Destination:</label>
+                        <input type="text" class="form-control" id="dst-input" placeholder="North Pole">
                     </div>
-                </div>
+
+                    <div class="form-group">
+                        <label for="time-input">First Train Time (HH:mm - military time):</label>
+                        <input type="text" class="form-control" id="time-input" placeholder="00:00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="frq-input">Frequency (min):</label>
+                        <input type="number" class="form-control" id="frq-input" placeholder="Distance from Destination in Minutes">
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-primary float-center" id="new_train">Submit</button>
+                
+                </form>
             </div>
         </div>
-        <br><br>
+    </div>
+</div>
 
-        <div class="row"  id="footer">
-            <div class="col-sm-12">footer</div>
-        </div>
-    </div> 
-    <script src=""></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<div class="row">
+    <div class="col-sm-12" id="spacing"></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" id="footer">
+        <i class="fa fa-heart"></i>
+        footer
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<body>
 </body>
 </html>
