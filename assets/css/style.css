@@ -10,7 +10,7 @@
 #train-table th,
     td {
       display: inline-block;
-      width: 16.575%;
+      width: 15%;
     }
 
 #spacing {
@@ -21,13 +21,6 @@
     height:75px;
 }
 
-#train-table th, td {
-    display: inline-block;
-    width: 20%;
-}
-
 #add_button {
     float:center;
 }
-
-/* Create Neat Train style

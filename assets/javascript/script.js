@@ -45,7 +45,7 @@ $(function() {
 
     
     // Uploads train data to the database
-    database.ref().push(newTrain);
+    // database.ref().push(newTrain);
 
     // Logs everything to console
     console.log(newTrain.name);
@@ -95,7 +95,7 @@ $(function() {
 
     console.log(trainTOA)
     console.log(PrettyTOA);
-    console.log(trainMinutesAway);
+    //console.log(trainMinutesAway);
 
     // Create the new row
     var newRow = $("<tr>").append(
