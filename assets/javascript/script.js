@@ -1,11 +1,3 @@
-// Steps to complete:
-
-// 1. Initialize Firebase
-// 2. Create button for adding new trains - then update the html + update the database
-// 3. Calculate the minutes away. Using difference between start and current time.
-//    Then use moment.js formatting to set difference in minutes.
-// 5. Calculate Next Arrival
-
 $(function() {
 
   var currentDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -32,7 +24,7 @@ $(function() {
     // Grabs user input
     var trainName = $("#name-input").val().trim();
     var trainDst = $("#dst-input").val().trim();
-    var trainFirstTime = moment($("#time-input").val().trim(),"HH:mm")
+    var trainFirstTime = $("#time-input").val().trim();
     var trainFrq = $("#frq-input").val().trim();
 
     // Creates local "temporary" object for holding train data
@@ -45,7 +37,7 @@ $(function() {
 
     
     // Uploads train data to the database
-    // database.ref().push(newTrain);
+    database.ref().push(newTrain);
 
     // Logs everything to console
     console.log(newTrain.name);
@@ -84,14 +76,15 @@ $(function() {
     
 
     // Calculate the next time of arrival
-    var trainTOA = trainTime + trainFrq;
+    var trainTOA = trainTime;
     
     // Prettify the next arrival time
-    var PrettyTOA = moment.unix(trainTOA).format("HH:MM"); 
+    var PrettyTOA = moment(trainTime, "HH:MM"); 
 
 
     // Calculate the Minutes Away
     // var trainMinutesAway = PrettyTOA - currentTime;
+    
 
     console.log(trainTOA)
     console.log(PrettyTOA);
@@ -109,7 +102,7 @@ $(function() {
     );
 
     // Append the new row to the table
-    $("#new_train > tbody").append(newRow);
+    $("#train-table > tbody").append(newRow);
   });
 
 });
