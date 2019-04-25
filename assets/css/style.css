@@ -1,11 +1,20 @@
 .jumbotron, h1, h2, #footer {
-    background-color: rgb(157, 190, 129);
     color:#fff;
     text-align: center;
 }
 
+.jumbotron {
+    background: url("../images/trainGiphy.gif");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 450px;
+
+}
+
 .card-header {
-    font-weight:bold;
+    font-weight: bold;
+    background-color: #63cc00;
 }
 
 #train-table th,
@@ -20,6 +29,7 @@
 
 #footer {
     height:75px;
+    background-color: rgb(157, 190, 129);
 }
 
 #add_button {
