@@ -1,3 +1,7 @@
+body {
+    background-color: #EEE8AA;
+}
+
 .jumbotron, h1, h2, #footer {
     color:#fff;
     text-align: center;
