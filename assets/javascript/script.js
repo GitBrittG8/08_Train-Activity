@@ -70,35 +70,51 @@ $(function() {
     console.log(trainFrq);
     console.log(trainTime);
     
-
-    // trainTOA = trainTime + trainFrq
-    // trainMinutesAway = trainTime - currentTime
     
-
-    // Calculate the next time of arrival
-    var trainTOA = trainTime;
-    
-    // Prettify the next arrival time
-    var PrettyTOA = moment(trainTime, "HH:MM"); 
-
-
-    // Calculate the Minutes Away
-    // var trainMinutesAway = PrettyTOA - currentTime;
-    
+    // Prettify the arrival time
+    var trainTOA = moment(trainTime, "HH:MM"); 
 
     console.log(trainTOA)
-    console.log(PrettyTOA);
-    //console.log(trainMinutesAway);
+
+
+    //Splices time into moment hours and mins
+    if (trainFrq && trainTime) {
+      var timeArr = trainTime.split(":");
+      var momentTrainTime = moment()
+        .hours(timeArr[0])
+        .minutes(timeArr[1]);
+      var maxMoment = moment.max(moment(), momentTrainTime);
+      var tMinutes;
+      var tArrival;
+
+      // If the first train is later than the current time, sent arrival to the first train time
+      if (maxMoment === momentTrainTime) {
+        tArrival = momentTrainTime.format("hh:mm A");
+        tMinutes = momentTrainTime.diff(moment(), "minutes");
+      } else {
+        // Calculate the minutes until arrival using hardcore math
+        // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time
+        // and find the modulus between the difference and the frequency.
+        var differenceTimes = moment().diff(momentTrainTime, "minutes");
+        var tRemainder = differenceTimes % trainFrq;
+        tMinutes = trainFrq - tRemainder;
+        // To calculate the arrival time, add the tMinutes to the current time
+        tArrival = moment()
+          .add(tMinutes, "m")
+          .format("hh:mm A");
+      }
+      console.log("tMinutes:", tMinutes);
+      console.log("tArrival:", tArrival);
+    }
 
     // Create the new row
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
       $("<td>").text(trainDst),
       $("<td>").text(trainFrq),
-      $("<td>").text(trainTime)
-      //$("<td>").text(trainTOA),
-      //$("<td>").text(trainMinutesAway)
-      
+      $("<td>").text(trainTime),
+      $("<td>").text(tArrival),
+      $("<td>").text(tMinutes)
     );
 
     // Append the new row to the table
